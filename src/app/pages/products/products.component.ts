@@ -9,11 +9,11 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsComponent implements OnInit {
    products:ProductModel[] = [];
-   selectedProduct = this.products[0].selectedProduct;
+   selectedProduct: UpdateProductDto = {};
    
 
   constructor(private productService:ProductService) {
-   
+   this.initProduct();
   }
   
   ngOnInit(): void {
@@ -23,6 +23,10 @@ export class ProductsComponent implements OnInit {
     //this.updateProduct();
     //this.deleteProduct();
     //this.editProduct();
+  }
+
+  initProduct(): void {
+    this.selectedProduct = {title:'', price:0, description:''};
   }
 
   getProducts(){
